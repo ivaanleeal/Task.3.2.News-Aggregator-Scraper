@@ -7,4 +7,38 @@ class LavozgaliciaSpider(scrapy.Spider):
     start_urls = ["https://www.lavozdegalicia.es/"]
 
     def parse(self, response):
-        pass
+        title = response.xpath('//title/text()').get()
+        autor = response.xpath('//section//div//p//span//a/text()').get()
+        noticia = response.xpath('//section//div//h4//a/text()').get()
+        dato = response.xpath('//section//div//p//text()').get()
+        url_actual = response.url
+
+            
+        autores= [n.strip() for n in autor.split("/") if n.strip()]
+        
+        print(f'Título: {url_actual}')
+        print(f'Título: {title}')
+        print(f'Autor: {autores}')
+        print(f'Noticia: {noticia}')
+        print(f'Datos: {dato}')
+        
+        
+        yield {
+            'Fuente': url_actual,
+        }
+        
+        yield {
+            'Título': title,
+        }
+        
+        yield {
+            'Autor': autores
+        }
+        
+        yield {
+            'Noticia': noticia
+        }
+        
+        yield {
+            'Dato': dato
+        }
