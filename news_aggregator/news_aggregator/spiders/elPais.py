@@ -20,18 +20,18 @@ class ElpaisSpider(scrapy.Spider):
         
         autores= [n.strip() for n in autor.split("/") if n.strip()]
         
-        print(f'Título: {url_actual}')
+        print(f'Fuente: {url_actual}')
         print(f'Título: {title}')
         print(f'Fecha: {hora, dia}')
         print(f'Autor: {autores}')
         print(f'Noticia: {noticia}')
         
         yield {
-            'Fuente': url_actual,
+            'Fuente': url_actual
         }
         
         yield {
-            'Título': title,
+            'Título': title
         }
 
         yield {

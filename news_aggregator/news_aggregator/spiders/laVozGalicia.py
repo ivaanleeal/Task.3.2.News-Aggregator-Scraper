@@ -24,11 +24,11 @@ class LavozgaliciaSpider(scrapy.Spider):
         
         
         yield {
-            'Fuente': url_actual,
+            'Fuente': url_actual
         }
         
         yield {
-            'Título': title,
+            'Título': title
         }
         
         yield {
